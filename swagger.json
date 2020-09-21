@@ -317,16 +317,7 @@
       "capabilities" : {
         "type" : "array",
         "items" : {
-          "type" : "object",
-          "required" : [ "action", "version" ],
-          "properties" : {
-            "action" : {
-              "type" : "string"
-            },
-            "version" : {
-              "type" : "string"
-            }
-          }
+          "$ref" : "#/components/schemas/capability"
         },
         "example" : [ {
           "action" : "capabilities",
@@ -339,6 +330,22 @@
           "version" : 0.1
         }, {
           "action" : "routes",
+          "version" : 0.1
+        } ]
+      },
+      "capability" : {
+        "type" : "object",
+        "required" : [ "action", "version" ],
+        "properties" : {
+          "action" : {
+            "type" : "string"
+          },
+          "version" : {
+            "type" : "string"
+          }
+        },
+        "example" : [ {
+          "action" : "collections",
           "version" : 0.1
         } ]
       },
