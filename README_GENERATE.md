@@ -23,8 +23,9 @@ Then:
 
 ## Generate the library
 
-    openapi-generator generate -g python -i swagger.json --package-name pds_api_client
+    openapi-generator generate -g python -i swagger.json --package-name pds.api_client
   
+ Change manually the version in setup.py accordingly with the swagger specification version.
   
 ## Install it
     
