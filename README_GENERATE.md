@@ -45,6 +45,7 @@ Then:
     cd docs
     sphinx-apidoc -o source/api ../pds/api_client
     make html
+    cp -r docs/build/html /tmp/
     
  Publish on github
  
