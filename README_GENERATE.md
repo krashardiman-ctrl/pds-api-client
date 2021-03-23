@@ -43,7 +43,7 @@ Then:
 # Generate documentation 
 
     cd docs
-    sphinx-apidoc -o docs/source/api pds/api_client
+    sphinx-apidoc -o source/api ../pds/api_client
     make html
     
  Publish on github
