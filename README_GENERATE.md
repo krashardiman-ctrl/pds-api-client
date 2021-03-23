@@ -23,9 +23,8 @@ Then:
 
 ## Generate the library
 
-    openapi-generator generate -g python -i swagger.json --package-name pds.api_client
-  
- Change manually the version in setup.py accordingly with the swagger specification version.
+    openapi-generator generate -g python -i swagger.json --package-name pds.api_client --additional-properties=packageVersion=0.2.0
+     
   
 ## Install it
     
@@ -41,10 +40,16 @@ Then:
     python setup.py sdist bdist_wheel
     twine upload --repository testpypi dist/*
     
-## To do 
+# Generate documentation 
 
-    Publish the documentation and make it accessible from pypi deployment.
+    cd docs
+    sphinx-apidoc -o docs/source/api pds/api_client
+    make html
     
+ Publish on github
+ 
+    git checkout gh-pages
+        
     
     
     
