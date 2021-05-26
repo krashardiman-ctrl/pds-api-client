@@ -13,7 +13,7 @@ api_client = ApiClient(configuration)
 collections = CollectionsApi(api_client)
 
 try:
-    api_response = collections.get_collection(q="", start=0, limit=20)
+    api_response = collections.get_collection(start=0, limit=20)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->get_collection: %s\n" % e)
