@@ -49,7 +49,9 @@ Then:
     
  Publish on github
  
+    cd ..
     git checkout gh-pages
+    cp -r /tmp/* . 
         
     
     
