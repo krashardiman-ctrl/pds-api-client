@@ -51,7 +51,7 @@ Then:
  
     cd ..
     git checkout gh-pages
-    cp -r /tmp/* . 
+    cp -r /tmp/html/* . 
         
     
     
