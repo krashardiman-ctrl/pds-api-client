@@ -2,7 +2,7 @@ from __future__ import print_function
 from pds.api_client.rest import ApiException
 from pds.api_client import Configuration
 from pds.api_client import ApiClient
-from pds.api_client import CollectionsApi
+from pds.api_client.api.collections_api import CollectionsApi
 from pprint import pprint
 
 # create an instance of the API class

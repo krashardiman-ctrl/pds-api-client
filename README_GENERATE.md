@@ -23,8 +23,22 @@ Then:
 
 ## Generate the library
 
+There is a bug with version 4.3.1 which make the following request generate a broken API package:
+
     openapi-generator generate -g python -i swagger.json --package-name pds.api_client --additional-properties=packageVersion=0.2.0
-     
+
+A fork and pull request has been made to correct that. To use the patched version, do:
+
+    git clone https://github.com/tloubrieu-jpl/openapi-generator.git
+    cd  openapi-generator
+    ./mvnw clean package
+    
+Run the generation:
+
+    java -jar /Users/loubrieu/tmp/openapi-generator/modules/openapi-generator-cli/target/openapi-generator-cli.jar generate  -g python-legacy -i swagger.json --package-name pds.api_client --additional-properties=packageVersion=0.6.1
+
+
+    
   
 ## Install it
     
