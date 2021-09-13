@@ -1,16 +1,18 @@
-# Security Policy
+# 👮‍♀️ Security Policy
 
-## Supported Versions
+This document describes the security policy of the PDS API client for Python.
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.18.2   | :white_check_mark: |
-| 1.17.5   | :white_check_mark: |
-| < 1.17.5   | :x: |
+## 📀 Supported Versions
 
-## Reporting a Vulnerability
+The following table describes what versions are supported and which are not.
 
-Please create a new issue using the [Vulnerability Issue template](https://github.com/NASA-PDS-Incubator/validate/issues/new?assignees=jordanpadams&labels=triage-needed%2C+security&template=vulnerability-issue.md&title=%5BSECURITY%5D+Title+Here)
+| Version | Supported  |
+|:--------|:----------:|
+| 0.5.0   | ✅         |
+| <0.5    | ❌         |
+
+
+## 🚨 Reporting a Vulnerability
+
+Please create a new issue using the [Vulnerability Issue template](https://github.com/NASA-PDS/pds-api-client/issues/new).

@@ -1,15 +1,23 @@
-.. PDS API python client
+PDS API Client (Python)
+=======================
+
+This is an application programmer's interface (API) in Python to the Planetary
+Data System (PDS_) ReST_ API.
 
 
 
-Welcome to Planetary Data System python API client
-===================================================
+Sitemap
+=======
 
+.. /overview
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Contents:
+..  toctree::
+    :glob:
+    :caption: Contents
 
-   quickstart<quickstart>
-   reference<api/api_client>
+    quickstart/index
+    developer/index
+    support/*
 
+.. _PDS: https://pds.nasa.gov/
+.. _ReST: https://restfulapi.net/
