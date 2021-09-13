@@ -37,25 +37,17 @@ Then::
 Generate the Library
 ~~~~~~~~~~~~~~~~~~~~
 
-There is a bug with version 4.3.1 which makes the following request generate a
-broken API package::
+First, install OpenAPI Generator, then run::
 
     openapi-generator generate -g python -i swagger.json --package-name pds.api_client --additional-properties=packageVersion=X.Y.Z.
+    cp .gitignore-orig .gitignore
 
-Replace ``X.Y.Z`` with the version of the package you're creating.
+Replace ``X.Y.Z`` with the version of the package you're creating. The second
+step is necessary because the OpenAPI generator blithely clobbers our
+precious ``.gitignore`` file.
 
 .. note:: Use ``openapi-generator`` version 5.2.1 or newer in order to work
    around a bug in the generator.
-
-version, do::
-
-    git clone https://github.com/tloubrieu-jpl/openapi-generator.git $HOME
-    cd $HOME/openapi-generator
-    ./mvnw clean package
-    
-Run the generation::
-
-    java -jar $HOME/openapi-generator/modules/openapi-generator-cli/target/openapi-generator-cli.jar generate  -g python-legacy -i swagger.json --package-name pds.api_client --additional-properties=packageVersion=0.6.1
 
 
 Installation
