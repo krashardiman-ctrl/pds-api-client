@@ -1,18 +1,29 @@
+Quickstart for the PDS API Python Client
 ========================================
-Quickstart for the PDS API python client
-========================================
+
+This document can get you up to speed with the Python client to the PDS API.
+
 
 Prerequisites
 -------------
 
-python 3 (tested with 3.7).
+Python 3 (tested with 3.7).
 
 
-Install
--------
+Installation
+------------
 
+To install this package, run::
 
     pip install pds.api-client
+
+
+You can also include it as a dependency in another package, for example, in
+your ``install_requires``.
+
+.. warning:: If you use this package a a dependency, you **cannot** use
+   ``pds`` as a top-level namespace package in your own software. Just use
+   ``pds2`` or anything else. This is a `documented bug`_.
 
 
 Create an api connection
@@ -58,7 +69,11 @@ For collections for example:
        print("Exception when calling CollectionsApi->get_collection: %s\n" % e)
 
 
-Reference documentation
+Reference Documentation
 -----------------------
 
-See `client_api <./api/api_client.api.html>`_
+See `client_api <../api/api_client.api.html>`_
+
+
+.. References:
+.. _`documented bug`: https://github.com/NASA-PDS/pds-api-client/issues/7

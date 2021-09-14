@@ -8,7 +8,8 @@ from pprint import pprint
 # create an instance of the API class
 configuration = Configuration()
 configuration.host = 'http://pds-gamma.jpl.nasa.gov/api/'
-#configuration.host = 'http://localhost:8080/'
+
+# configuration.host = 'http://localhost:8080/'
 api_client = ApiClient(configuration)
 collections = CollectionsApi(api_client)
 
