@@ -15,4 +15,4 @@ The following table describes what versions are supported and which are not.
 
 ## 🚨 Reporting a Vulnerability
 
-Please create a new issue using the [Vulnerability Issue template](https://github.com/NASA-PDS/pds-api-client/issues/new).
+Please create a new issue using the [Vulnerability Issue template](https://github.com/NASA-PDS/pds-api-client/issues/new?template=vulnerability-issue.md).
