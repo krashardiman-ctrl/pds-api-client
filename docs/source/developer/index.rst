@@ -56,7 +56,7 @@ follows::
     cd /tmp
     git clone https://github.com/tloubrieu-jpl/openapi-generator.git
     cd /tmp/openapi-generator
-    ./mvnw clean package
+    ./mvnw -Dmaven.test.skip=true clean package
 
 Then instead of using ``openapi-generator`` as above, do this instead::
 
