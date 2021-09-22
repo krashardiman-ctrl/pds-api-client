@@ -11,7 +11,7 @@
       "name" : "Apache 2.0",
       "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version" : "0.3.dev"
+    "version" : "main"
   },
   "externalDocs" : {
     "description" : "Find out more information on the PDS API Specification",
@@ -68,6 +68,16 @@
             "type" : "string"
           }
         }, {
+          "name" : "keyword",
+          "in" : "query",
+          "description" : "keyword search query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
           "name" : "fields",
           "in" : "query",
           "description" : "returned fields, syntax field0,field1",
@@ -109,14 +119,19 @@
           "200" : {
             "description" : "Successful request",
             "content" : {
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
                 }
               },
-              "application/xml" : {
+              "application/pds4+json" : {
                 "schema" : {
-                  "type" : "object"
+                  "$ref" : "#/components/schemas/pds4Products"
                 }
               }
             }
@@ -153,19 +168,123 @@
           "200" : {
             "description" : "Successful request",
             "content" : {
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/product"
                 }
               },
-              "application/xml" : {
+              "application/pds4+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/pds4Product"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      }
+    },
+    "/products/{lidvid}/latest" : {
+      "get" : {
+        "tags" : [ "products" ],
+        "summary" : "URN resolver for lidvid",
+        "operationId" : "products-by-lidvid-latest",
+        "parameters" : [ {
+          "name" : "lidvid",
+          "in" : "path",
+          "description" : "lidvid (urn)",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/pds4+xml" : {
                 "schema" : {
                   "type" : "object"
                 }
               },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/product"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      }
+    },
+    "/products/{lidvid}/all" : {
+      "get" : {
+        "tags" : [ "products" ],
+        "summary" : "Get one product by lidvid, or all versions of a product by lid",
+        "operationId" : "products-by-lidvid-all",
+        "parameters" : [ {
+          "name" : "lidvid",
+          "in" : "path",
+          "description" : "lidvid (urn)",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "start",
+          "in" : "query",
+          "description" : "offset in matching result list, for pagination",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "default" : 0
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "maximum number of matching results returned, for pagination",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "default" : 10
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
               "application/pds4+xml" : {
                 "schema" : {
                   "type" : "object"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
                 }
               }
             }
@@ -262,11 +381,6 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
                 }
-              },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
-                }
               }
             }
           },
@@ -362,11 +476,6 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
                 }
-              },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
-                }
               }
             }
           },
@@ -417,6 +526,16 @@
             "type" : "string"
           },
           "example" : "((pds/Primary_Result_Summary/pds/processing_level eq \"Raw\") or not (_file_size le 8942))"
+        }, {
+          "name" : "keyword",
+          "in" : "query",
+          "description" : "keyword search query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
         }, {
           "name" : "fields",
           "in" : "query",
@@ -469,14 +588,19 @@
               }
             },
             "content" : {
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
                 }
               },
-              "application/xml" : {
+              "application/pds4+json" : {
                 "schema" : {
-                  "type" : "object"
+                  "$ref" : "#/components/schemas/pds4Products"
                 }
               }
             }
@@ -517,19 +641,123 @@
           "200" : {
             "description" : "Successful request",
             "content" : {
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/product"
                 }
               },
-              "application/xml" : {
+              "application/pds4+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/pds4Product"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      }
+    },
+    "/collections/{lidvid}/latest" : {
+      "get" : {
+        "tags" : [ "collections" ],
+        "summary" : "collections URN resolver for lidvid",
+        "operationId" : "collections-by-lidvid-latest",
+        "parameters" : [ {
+          "name" : "lidvid",
+          "in" : "path",
+          "description" : "lidvid (urn)",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/pds4+xml" : {
                 "schema" : {
                   "type" : "object"
                 }
               },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/product"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      }
+    },
+    "/collections/{lidvid}/all" : {
+      "get" : {
+        "tags" : [ "collections" ],
+        "summary" : "Get one collection by lidvid, or all versions of a collection by lid",
+        "operationId" : "collections-by-lidvid-all",
+        "parameters" : [ {
+          "name" : "lidvid",
+          "in" : "path",
+          "description" : "lidvid (urn)",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "start",
+          "in" : "query",
+          "description" : "offset in matching result list, for pagination",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "default" : 0
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "maximum number of matching results returned, for pagination",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "default" : 10
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
               "application/pds4+xml" : {
                 "schema" : {
                   "type" : "object"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
                 }
               }
             }
@@ -625,11 +853,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
-                }
-              },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
                 }
               },
               "application/pds4+xml" : {
@@ -731,11 +954,6 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
                 }
-              },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
-                }
               }
             }
           },
@@ -786,6 +1004,16 @@
             "type" : "string"
           },
           "example" : "((pds/Primary_Result_Summary/pds/processing_level eq \"Raw\") or not (_file_size le 8942))"
+        }, {
+          "name" : "keyword",
+          "in" : "query",
+          "description" : "keyword search query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
         }, {
           "name" : "fields",
           "in" : "query",
@@ -838,14 +1066,19 @@
               }
             },
             "content" : {
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
                 }
               },
-              "application/xml" : {
+              "application/pds4+json" : {
                 "schema" : {
-                  "type" : "object"
+                  "$ref" : "#/components/schemas/pds4Products"
                 }
               }
             }
@@ -886,19 +1119,123 @@
           "200" : {
             "description" : "Successful request",
             "content" : {
+              "application/pds4+xml" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              },
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/product"
                 }
               },
-              "application/xml" : {
+              "application/pds4+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/pds4Product"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      }
+    },
+    "/bundles/{lidvid}/latest" : {
+      "get" : {
+        "tags" : [ "bundles" ],
+        "summary" : "bundle URN resolver for lidvid, get one bundle",
+        "operationId" : "bundle-by-lidvid-latest",
+        "parameters" : [ {
+          "name" : "lidvid",
+          "in" : "path",
+          "description" : "lidvid (urn)",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
+              "application/pds4+xml" : {
                 "schema" : {
                   "type" : "object"
                 }
               },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/product"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "lidvid not found"
+          },
+          "500" : {
+            "description" : "Internal server error"
+          }
+        }
+      }
+    },
+    "/bundles/{lidvid}/all" : {
+      "get" : {
+        "tags" : [ "bundles" ],
+        "summary" : "Get one bundle by lidvid, or all versions of a bundle by lid",
+        "operationId" : "bundle-by-lidvid-all",
+        "parameters" : [ {
+          "name" : "lidvid",
+          "in" : "path",
+          "description" : "lidvid (urn)",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "start",
+          "in" : "query",
+          "description" : "offset in matching result list, for pagination",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "default" : 0
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "maximum number of matching results returned, for pagination",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "default" : 10
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful request",
+            "content" : {
               "application/pds4+xml" : {
                 "schema" : {
                   "type" : "object"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/products"
                 }
               }
             }
@@ -995,11 +1332,6 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
                 }
-              },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
-                }
               }
             }
           },
@@ -1095,11 +1427,6 @@
                 "schema" : {
                   "$ref" : "#/components/schemas/products"
                 }
-              },
-              "application/xml" : {
-                "schema" : {
-                  "type" : "object"
-                }
               }
             }
           },
@@ -1135,6 +1462,22 @@
         "properties" : {
           "q" : {
             "type" : "string",
+            "xml" : {
+              "namespace" : "http://pds.nasa.gov/api",
+              "prefix" : "pds_api"
+            }
+          },
+          "hits" : {
+            "type" : "integer",
+            "description" : "total number of matching results. -1 indicates an excessive amount of resource required to compute it",
+            "xml" : {
+              "namespace" : "http://pds.nasa.gov/api",
+              "prefix" : "pds_api"
+            }
+          },
+          "took" : {
+            "type" : "integer",
+            "description" : "Number of milliseconds it \"took\" to do request",
             "xml" : {
               "namespace" : "http://pds.nasa.gov/api",
               "prefix" : "pds_api"
@@ -1423,6 +1766,99 @@
         "xml" : {
           "namespace" : "http://pds.nasa.gov/api",
           "prefix" : "pds_api"
+        }
+      },
+      "pds4Product" : {
+        "required" : [ "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "LIDVID"
+          },
+          "metadata" : {
+            "$ref" : "#/components/schemas/pds4Metadata"
+          },
+          "pds4" : {
+            "type" : "object",
+            "description" : "PDS4 JSON"
+          }
+        },
+        "description" : "PDS4 Label"
+      },
+      "pds4Metadata" : {
+        "type" : "object",
+        "properties" : {
+          "node_name" : {
+            "type" : "string"
+          },
+          "label_file" : {
+            "$ref" : "#/components/schemas/pds4Metadata_label_file"
+          },
+          "data_files" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/pds4Metadata_data_files"
+            }
+          }
+        }
+      },
+      "pds4Products" : {
+        "required" : [ "summary" ],
+        "type" : "object",
+        "properties" : {
+          "summary" : {
+            "$ref" : "#/components/schemas/summary"
+          },
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/pds4Product"
+            }
+          }
+        }
+      },
+      "pds4Metadata_label_file" : {
+        "type" : "object",
+        "properties" : {
+          "file_name" : {
+            "type" : "string"
+          },
+          "file_ref" : {
+            "type" : "string"
+          },
+          "creation_date" : {
+            "type" : "string"
+          },
+          "file_size" : {
+            "type" : "string"
+          },
+          "md5_checksum" : {
+            "type" : "string"
+          }
+        }
+      },
+      "pds4Metadata_data_files" : {
+        "type" : "object",
+        "properties" : {
+          "file_name" : {
+            "type" : "string"
+          },
+          "file_ref" : {
+            "type" : "string"
+          },
+          "creation_date" : {
+            "type" : "string"
+          },
+          "file_size" : {
+            "type" : "string"
+          },
+          "md5_checksum" : {
+            "type" : "string"
+          },
+          "mime_type" : {
+            "type" : "string"
+          }
         }
       }
     }
