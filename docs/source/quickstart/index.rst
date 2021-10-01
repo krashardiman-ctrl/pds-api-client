@@ -72,7 +72,7 @@ For collections for example:
 Reference Documentation
 -----------------------
 
-See `client_api <../api/api_client.api.html>`_
+See `client_api <../api/pds.api_client.html>`_
 
 
 .. References:

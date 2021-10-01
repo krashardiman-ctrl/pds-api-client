@@ -10,19 +10,21 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../../pds/'))
 
+print(sys.path)
+project_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+print(project_dir)
+sys.path.insert(0, project_dir)
+print(sys.path)
 
 # -- Project information -----------------------------------------------------
 
 project = 'PDS API Client (Python)'
 copyright = '2021 California Institute of Technology'
 author = 'NASA Planetary Data System'
-release = '0.0.0'
-version = '0.0.0'
-
 
 # -- General configuration ---------------------------------------------------
 
@@ -54,6 +56,8 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
+
+
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

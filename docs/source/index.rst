@@ -16,8 +16,10 @@ Sitemap
     :caption: Contents
 
     quickstart/index
+    Package Reference <api/pds.api_client>
     developer/index
     support/*
+
 
 .. _PDS: https://pds.nasa.gov/
 .. _ReST: https://restfulapi.net/
