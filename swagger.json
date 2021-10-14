@@ -11,7 +11,7 @@
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "main"
+    "version": "0.5.0-SNAPSHOT"
   },
   "externalDocs": {
     "description": "Find out more information on the PDS API Specification",
@@ -162,7 +162,7 @@
         }
       }
     },
-    "/products/{lidvid}": {
+    "/products/{identifier}": {
       "get": {
         "tags": [
           "products"
@@ -171,9 +171,9 @@
         "operationId": "products-by-lidvid",
         "parameters": [
           {
-            "name": "lidvid",
+            "name": "identifier",
             "in": "path",
-            "description": "lidvid (urn)",
+            "description": "lidvid or lid",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -212,7 +212,7 @@
         }
       }
     },
-    "/products/{lidvid}/latest": {
+    "/products/{identifier}/latest": {
       "get": {
         "tags": [
           "products"
@@ -221,9 +221,9 @@
         "operationId": "products-by-lidvid-latest",
         "parameters": [
           {
-            "name": "lidvid",
+            "name": "identifier",
             "in": "path",
-            "description": "lidvid (urn)",
+            "description": "lidvid or lid",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -257,7 +257,7 @@
         }
       }
     },
-    "/products/{lidvid}/all": {
+    "/products/{identifier}/all": {
       "get": {
         "tags": [
           "products"
@@ -266,9 +266,9 @@
         "operationId": "products-by-lidvid-all",
         "parameters": [
           {
-            "name": "lidvid",
+            "name": "identifier",
             "in": "path",
-            "description": "lidvid (urn)",
+            "description": "lidvid or lid",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -326,7 +326,7 @@
         }
       }
     },
-    "/products/{lidvid}/bundles": {
+    "/products/{identifier}/bundles": {
       "get": {
         "tags": [
           "products containing bundles"
@@ -335,9 +335,9 @@
         "operationId": "bundles-containing-product",
         "parameters": [
           {
-            "name": "lidvid",
+            "name": "identifier",
             "in": "path",
-            "description": "lidvid (urn)",
+            "description": "lidvid or lid",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -430,7 +430,7 @@
         }
       }
     },
-    "/products/{lidvid}/collections": {
+    "/products/{identifier}/collections": {
       "get": {
         "tags": [
           "product containing collections"
@@ -439,9 +439,9 @@
         "operationId": "collections-containing-product",
         "parameters": [
           {
-            "name": "lidvid",
+            "name": "identifier",
             "in": "path",
-            "description": "lidvid (urn)",
+            "description": "lidvid or lid",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -677,7 +677,7 @@
         }
       }
     },
-    "/collections/{lidvid}": {
+    "/collections/{identifier}": {
       "get": {
         "tags": [
           "collections"
@@ -686,9 +686,9 @@
         "operationId": "collections-by-lidvid",
         "parameters": [
           {
-            "name": "lidvid",
+            "name": "identifier",
             "in": "path",
-            "description": "lidvid (urn)",
+            "description": "lidvid or lid",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -727,7 +727,7 @@
         }
       }
     },
-    "/collections/{lidvid}/latest": {
+    "/collections/{identifier}/latest": {
       "get": {
         "tags": [
           "collections"
@@ -736,9 +736,9 @@
         "operationId": "collections-by-lidvid-latest",
         "parameters": [
           {
-            "name": "lidvid",
+            "name": "identifier",
             "in": "path",
-            "description": "lidvid (urn)",
+            "description": "lidvid or lid",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -772,7 +772,7 @@
         }
       }
     },
-    "/collections/{lidvid}/all": {
+    "/collections/{identifier}/all": {
       "get": {
         "tags": [
           "collections"
@@ -781,9 +781,9 @@
         "operationId": "collections-by-lidvid-all",
         "parameters": [
           {
-            "name": "lidvid",
+            "name": "identifier",
             "in": "path",
-            "description": "lidvid (urn)",
+            "description": "lidvid or lid",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -841,7 +841,7 @@
         }
       }
     },
-    "/collections/{lidvid}/bundles": {
+    "/collections/{identifier}/bundles": {
       "get": {
         "tags": [
           "collection's containing bundles"
@@ -850,9 +850,9 @@
         "operationId": "bundles-containing-collection",
         "parameters": [
           {
-            "name": "lidvid",
+            "name": "identifier",
             "in": "path",
-            "description": "lidvid (urn)",
+            "description": "lidvid or lid",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -950,7 +950,7 @@
         }
       }
     },
-    "/collections/{lidvid}/products": {
+    "/collections/{identifier}/products": {
       "get": {
         "tags": [
           "collection's products"
@@ -959,9 +959,217 @@
         "operationId": "products-of-a-collection",
         "parameters": [
           {
-            "name": "lidvid",
+            "name": "identifier",
             "in": "path",
-            "description": "lidvid (urn)",
+            "description": "lidvid or lid",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset in matching result list, for pagination",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of matching results returned, for pagination",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "returned fields, syntax field0,field1",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort results, syntax asc(field0),desc(field1)",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "only-summary",
+            "in": "query",
+            "description": "only return the summary, useful to get the list of available properties",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/products"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "lidvid not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/collections/{identifier}/products/latest": {
+      "get": {
+        "tags": [
+          "collection's products"
+        ],
+        "summary": "get producs belonging to a given collection",
+        "operationId": "products-of-a-collection-latest",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "description": "lidvid or lid",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset in matching result list, for pagination",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of matching results returned, for pagination",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "returned fields, syntax field0,field1",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort results, syntax asc(field0),desc(field1)",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "only-summary",
+            "in": "query",
+            "description": "only return the summary, useful to get the list of available properties",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/products"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "lidvid not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/collections/{identifier}/products/all": {
+      "get": {
+        "tags": [
+          "collection's products"
+        ],
+        "summary": "get producs belonging to a given collection",
+        "operationId": "products-of-a-collection-all",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "description": "lidvid or lid",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -1197,7 +1405,7 @@
         }
       }
     },
-    "/bundles/{lidvid}": {
+    "/bundles/{identifier}": {
       "get": {
         "tags": [
           "bundles"
@@ -1206,9 +1414,9 @@
         "operationId": "bundle-by-lidvid",
         "parameters": [
           {
-            "name": "lidvid",
+            "name": "identifier",
             "in": "path",
-            "description": "lidvid (urn)",
+            "description": "lidvid or lid",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -1247,7 +1455,7 @@
         }
       }
     },
-    "/bundles/{lidvid}/latest": {
+    "/bundles/{identifier}/latest": {
       "get": {
         "tags": [
           "bundles"
@@ -1256,9 +1464,9 @@
         "operationId": "bundle-by-lidvid-latest",
         "parameters": [
           {
-            "name": "lidvid",
+            "name": "identifier",
             "in": "path",
-            "description": "lidvid (urn)",
+            "description": "lidvid or lid",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -1292,7 +1500,7 @@
         }
       }
     },
-    "/bundles/{lidvid}/all": {
+    "/bundles/{identifier}/all": {
       "get": {
         "tags": [
           "bundles"
@@ -1301,9 +1509,9 @@
         "operationId": "bundle-by-lidvid-all",
         "parameters": [
           {
-            "name": "lidvid",
+            "name": "identifier",
             "in": "path",
-            "description": "lidvid (urn)",
+            "description": "lidvid or lid",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -1361,7 +1569,7 @@
         }
       }
     },
-    "/bundles/{lidvid}/collections": {
+    "/bundles/{identifier}/collections": {
       "get": {
         "tags": [
           "bundle's collections"
@@ -1370,9 +1578,9 @@
         "operationId": "collections-of-a-bundle",
         "parameters": [
           {
-            "name": "lidvid",
+            "name": "identifier",
             "in": "path",
-            "description": "lidvid (urn)",
+            "description": "lidvid or lid",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -1465,7 +1673,215 @@
         }
       }
     },
-    "/bundles/{lidvid}/products": {
+    "/bundles/{identifier}/collections/latest": {
+      "get": {
+        "tags": [
+          "bundle's collections"
+        ],
+        "summary": "get collections belonging to a given bundle",
+        "operationId": "collections-of-a-bundle-latest",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "description": "lidvid or lid",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset in matching result list, for pagination",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of matching results returned, for pagination",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "returned fields, syntax field0,field1",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort results, syntax asc(field0),desc(field1)",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "only-summary",
+            "in": "query",
+            "description": "only return the summary, useful to get the list of available properties",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/products"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "lidvid not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/bundles/{identifier}/collections/all": {
+      "get": {
+        "tags": [
+          "bundle's collections"
+        ],
+        "summary": "get collections belonging to a given bundle",
+        "operationId": "collections-of-a-bundle-all",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "description": "lidvid or lid",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset in matching result list, for pagination",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of matching results returned, for pagination",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "default": 100
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "returned fields, syntax field0,field1",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort results, syntax asc(field0),desc(field1)",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "only-summary",
+            "in": "query",
+            "description": "only return the summary, useful to get the list of available properties",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/products"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "lidvid not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/bundles/{identifier}/products": {
       "get": {
         "tags": [
           "bundle's products"
@@ -1474,9 +1890,9 @@
         "operationId": "products-of-a-bundle",
         "parameters": [
           {
-            "name": "lidvid",
+            "name": "identifier",
             "in": "path",
-            "description": "lidvid (urn)",
+            "description": "lidvid or lid",
             "required": true,
             "style": "simple",
             "explode": false,
