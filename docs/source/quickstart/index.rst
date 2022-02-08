@@ -56,11 +56,11 @@ Request one end point
 
 There are different API end points:
 
-- `CollectionsApi <./api/pds.api_client.api.html#module-pds.api_client.api.collections_api>`_
+- `CollectionsApi <../api/pds.api_client.api.html#module-pds.api_client.api.collections_api>`_
 
-- `BundleApi <./api/pds.api_client.api.html#module-pds.api_client.api.bundles_apii>`_
+- `BundleApi <../api/pds.api_client.api.html#module-pds.api_client.api.bundles_apii>`_
 
-- `ProductApi <./api/pds.api_client.api.html#module-pds.api_client.api.products_api>`_ (for all products)
+- `ProductApi <../api/pds.api_client.api.html#module-pds.api_client.api.products_api>`_ (for all products)
 
 
 For collections for example:
