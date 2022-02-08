@@ -68,6 +68,9 @@ html_static_path = ['_static']
 
 html_logo = '_static/images/PDS_Planets.png'
 
+# commented out since it breaks the RTD layout
+# not sure why it had been originally put here
+# that would need to be repaired before we put that back
 #html_context = {
 #    'css_files': [
 #        '_static/theme_overrides.css',  # override wide tables in RTD theme
