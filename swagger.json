@@ -133,19 +133,49 @@
           "200": {
             "description": "Successful request",
             "content": {
-              "application/pds4+xml": {
+              "*": {
                 "schema": {
                   "type": "object"
                 }
               },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/products"
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
                 }
               },
               "application/pds4+json": {
                 "schema": {
                   "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
                 }
               }
             }
@@ -186,19 +216,54 @@
           "200": {
             "description": "Successful request",
             "content": {
-              "application/pds4+xml": {
+              "*": {
                 "schema": {
                   "type": "object"
                 }
               },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/product"
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
                 }
               },
               "application/pds4+json": {
                 "schema": {
                   "$ref": "#/components/schemas/pds4Product"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Product"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
                 }
               }
             }
@@ -236,14 +301,54 @@
           "200": {
             "description": "Successful request",
             "content": {
-              "application/pds4+xml": {
+              "*": {
                 "schema": {
                   "type": "object"
                 }
               },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/product"
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
+                }
+              },
+              "application/pds4+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Product"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Product"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
                 }
               }
             }
@@ -305,14 +410,49 @@
           "200": {
             "description": "Successful request",
             "content": {
-              "application/pds4+xml": {
+              "*": {
                 "schema": {
                   "type": "object"
                 }
               },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/products"
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "application/pds4+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
                 }
               }
             }
@@ -414,9 +554,49 @@
           "200": {
             "description": "Successful request",
             "content": {
+              "*": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/products"
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "application/pds4+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
                 }
               }
             }
@@ -518,9 +698,49 @@
           "200": {
             "description": "Successful request",
             "content": {
+              "*": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/products"
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "application/pds4+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
                 }
               }
             }
@@ -644,14 +864,14 @@
               }
             },
             "content": {
-              "application/pds4+xml": {
+              "application/unsupported": {
                 "schema": {
                   "type": "object"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/products"
+                  "$ref": "#/components/schemas/pdsProducts"
                 }
               },
               "application/pds4+json": {
@@ -701,19 +921,54 @@
           "200": {
             "description": "Successful request",
             "content": {
-              "application/pds4+xml": {
+              "*": {
                 "schema": {
                   "type": "object"
                 }
               },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/product"
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
                 }
               },
               "application/pds4+json": {
                 "schema": {
                   "$ref": "#/components/schemas/pds4Product"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Product"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
                 }
               }
             }
@@ -751,14 +1006,54 @@
           "200": {
             "description": "Successful request",
             "content": {
-              "application/pds4+xml": {
+              "*": {
                 "schema": {
                   "type": "object"
                 }
               },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/product"
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
+                }
+              },
+              "application/pds4+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Product"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Product"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
                 }
               }
             }
@@ -820,14 +1115,49 @@
           "200": {
             "description": "Successful request",
             "content": {
-              "application/pds4+xml": {
+              "*": {
                 "schema": {
                   "type": "object"
                 }
               },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/products"
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "application/pds4+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
                 }
               }
             }
@@ -929,14 +1259,49 @@
           "200": {
             "description": "Successful request",
             "content": {
+              "*": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/products"
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "application/pds4+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
                 }
               },
               "application/pds4+xml": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
                 }
               }
             }
@@ -1038,9 +1403,49 @@
           "200": {
             "description": "Successful request",
             "content": {
+              "*": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/products"
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "application/pds4+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
                 }
               }
             }
@@ -1142,9 +1547,49 @@
           "200": {
             "description": "Successful request",
             "content": {
+              "*": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/products"
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "application/pds4+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
                 }
               }
             }
@@ -1246,9 +1691,49 @@
           "200": {
             "description": "Successful request",
             "content": {
+              "*": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/products"
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "application/pds4+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
                 }
               }
             }
@@ -1372,14 +1857,14 @@
               }
             },
             "content": {
-              "application/pds4+xml": {
+              "application/unsupported": {
                 "schema": {
                   "type": "object"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/products"
+                  "$ref": "#/components/schemas/pdsProducts"
                 }
               },
               "application/pds4+json": {
@@ -1429,19 +1914,54 @@
           "200": {
             "description": "Successful request",
             "content": {
-              "application/pds4+xml": {
+              "*": {
                 "schema": {
                   "type": "object"
                 }
               },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/product"
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
                 }
               },
               "application/pds4+json": {
                 "schema": {
                   "$ref": "#/components/schemas/pds4Product"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Product"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
                 }
               }
             }
@@ -1479,14 +1999,54 @@
           "200": {
             "description": "Successful request",
             "content": {
-              "application/pds4+xml": {
+              "*": {
                 "schema": {
                   "type": "object"
                 }
               },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/product"
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
+                }
+              },
+              "application/pds4+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Product"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Product"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProduct"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProduct"
                 }
               }
             }
@@ -1548,14 +2108,49 @@
           "200": {
             "description": "Successful request",
             "content": {
-              "application/pds4+xml": {
+              "*": {
                 "schema": {
                   "type": "object"
                 }
               },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/products"
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "application/pds4+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
                 }
               }
             }
@@ -1657,9 +2252,49 @@
           "200": {
             "description": "Successful request",
             "content": {
+              "*": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/products"
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "application/pds4+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
                 }
               }
             }
@@ -1761,9 +2396,49 @@
           "200": {
             "description": "Successful request",
             "content": {
+              "*": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/products"
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "application/pds4+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
                 }
               }
             }
@@ -1865,9 +2540,49 @@
           "200": {
             "description": "Successful request",
             "content": {
+              "*": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/products"
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "application/pds4+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
                 }
               }
             }
@@ -1969,9 +2684,49 @@
           "200": {
             "description": "Successful request",
             "content": {
+              "*": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/products"
+                  "$ref": "#/components/schemas/pdsProducts"
+                }
+              },
+              "application/kvp+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "application/pds4+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "application/pds4+xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/pds4Products"
+                }
+              },
+              "text/csv": {
+                "schema": {
+                  "$ref": "#/components/schemas/wyriwygProducts"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/pdsProducts"
                 }
               }
             }
@@ -1988,23 +2743,6 @@
   },
   "components": {
     "schemas": {
-      "products": {
-        "required": [
-          "summary"
-        ],
-        "type": "object",
-        "properties": {
-          "summary": {
-            "$ref": "#/components/schemas/summary"
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/product"
-            }
-          }
-        }
-      },
       "summary": {
         "type": "object",
         "properties": {
@@ -2071,7 +2809,7 @@
           "prefix": "pds_api"
         }
       },
-      "product": {
+      "pdsProduct": {
         "required": [
           "id",
           "metadata"
@@ -2174,6 +2912,56 @@
         "xml": {
           "namespace": "http://pds.nasa.gov/api",
           "prefix": "pds_api"
+        }
+      },
+      "pdsProducts": {
+        "required": [
+          "data",
+          "summary"
+        ],
+        "type": "object",
+        "properties": {
+          "summary": {
+            "$ref": "#/components/schemas/summary"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pdsProduct"
+            }
+          }
+        }
+      },
+      "wyriwygProduct": {
+        "required": [
+          "key_value_pairs"
+        ],
+        "type": "object",
+        "properties": {
+          "key_value_pairs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/wyriwygProduct_key_value_pairs"
+            }
+          }
+        }
+      },
+      "wyriwygProducts": {
+        "required": [
+          "data",
+          "summary"
+        ],
+        "type": "object",
+        "properties": {
+          "summary": {
+            "$ref": "#/components/schemas/summary"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/wyriwygProduct"
+            }
+          }
         }
       },
       "propertyArrayValues": {
@@ -2348,6 +3136,24 @@
         },
         "description": "PDS4 Label"
       },
+      "pds4Products": {
+        "required": [
+          "data",
+          "summary"
+        ],
+        "type": "object",
+        "properties": {
+          "summary": {
+            "$ref": "#/components/schemas/summary"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/pds4Product"
+            }
+          }
+        }
+      },
       "pds4Metadata": {
         "type": "object",
         "properties": {
@@ -2365,20 +3171,14 @@
           }
         }
       },
-      "pds4Products": {
-        "required": [
-          "summary"
-        ],
+      "wyriwygProduct_key_value_pairs": {
         "type": "object",
         "properties": {
-          "summary": {
-            "$ref": "#/components/schemas/summary"
+          "key": {
+            "type": "string"
           },
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/pds4Product"
-            }
+          "value": {
+            "type": "string"
           }
         }
       },
@@ -2422,6 +3222,143 @@
           },
           "mime_type": {
             "type": "string"
+          }
+        }
+      }
+    },
+    "responses": {
+      "Counted": {
+        "description": "Successful request",
+        "headers": {
+          "X-Total-Count": {
+            "description": "Total number of records maching the request.",
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        },
+        "content": {
+          "application/unsupported": {
+            "schema": {
+              "type": "object"
+            }
+          },
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/pdsProducts"
+            }
+          },
+          "application/pds4+json": {
+            "schema": {
+              "$ref": "#/components/schemas/pds4Products"
+            }
+          }
+        }
+      },
+      "Plural": {
+        "description": "Successful request",
+        "content": {
+          "*": {
+            "schema": {
+              "type": "object"
+            }
+          },
+          "*/*": {
+            "schema": {
+              "$ref": "#/components/schemas/pdsProducts"
+            }
+          },
+          "application/csv": {
+            "schema": {
+              "$ref": "#/components/schemas/wyriwygProducts"
+            }
+          },
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/pdsProducts"
+            }
+          },
+          "application/kvp+json": {
+            "schema": {
+              "$ref": "#/components/schemas/wyriwygProducts"
+            }
+          },
+          "application/pds4+json": {
+            "schema": {
+              "$ref": "#/components/schemas/pds4Products"
+            }
+          },
+          "application/pds4+xml": {
+            "schema": {
+              "$ref": "#/components/schemas/pds4Products"
+            }
+          },
+          "text/csv": {
+            "schema": {
+              "$ref": "#/components/schemas/wyriwygProducts"
+            }
+          },
+          "text/html": {
+            "schema": {
+              "$ref": "#/components/schemas/pdsProducts"
+            }
+          }
+        }
+      },
+      "Singular": {
+        "description": "Successful request",
+        "content": {
+          "*": {
+            "schema": {
+              "type": "object"
+            }
+          },
+          "*/*": {
+            "schema": {
+              "$ref": "#/components/schemas/pdsProduct"
+            }
+          },
+          "application/csv": {
+            "schema": {
+              "$ref": "#/components/schemas/wyriwygProduct"
+            }
+          },
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/pdsProduct"
+            }
+          },
+          "application/kvp+json": {
+            "schema": {
+              "$ref": "#/components/schemas/wyriwygProduct"
+            }
+          },
+          "application/pds4+json": {
+            "schema": {
+              "$ref": "#/components/schemas/pds4Product"
+            }
+          },
+          "application/pds4+xml": {
+            "schema": {
+              "$ref": "#/components/schemas/pds4Product"
+            }
+          },
+          "application/xml": {
+            "schema": {
+              "$ref": "#/components/schemas/pdsProduct"
+            }
+          },
+          "text/csv": {
+            "schema": {
+              "$ref": "#/components/schemas/wyriwygProduct"
+            }
+          },
+          "text/html": {
+            "schema": {
+              "$ref": "#/components/schemas/pdsProduct"
+            }
           }
         }
       }
