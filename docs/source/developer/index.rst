@@ -13,7 +13,7 @@ Requisites
 ----------
 
 • code generator https://github.com/OpenAPITools/openapi-generator
-• python 3.7
+• python 3.9
   
 
 Procedure
@@ -36,8 +36,14 @@ Then::
 
 Generate the Library
 ~~~~~~~~~~~~~~~~~~~~
+First make sure the swagger.json file is up to date. It contains the OpenAPI specification of the API for which we want to generate the client code.
+The reference OpenAPI specifications for PDS can be found on `specifications <https://nasa-pds.github.io/pds-api/specifications.html>`_
 
-First, install OpenAPI Generator, then run::
+You need to preprocess this specification to remove directives which break th code generation. Run from the base directory:
+
+    % python src/pds/api_client/preprocess_openapi.py
+
+Then, install OpenAPI Generator (e.g. on macos with brew), and run::
 
     openapi-generator generate -g python -i swagger.json --package-name pds.api_client --additional-properties=packageVersion=X.Y.Z.
     cp .gitignore-orig .gitignore
@@ -48,22 +54,6 @@ precious ``.gitignore`` file.
 
 .. note:: Use ``openapi-generator`` version 5.2.1 or newer in order to work
    around a bug in the generator.
-
-Note that there still may be a bug in the generator, even at version 5.2.1. If
-that's the case, you can try a patched version by `Thomas Loubrieu`_ as
-follows::
-
-    cd /tmp
-    git clone https://github.com/tloubrieu-jpl/openapi-generator.git
-    cd /tmp/openapi-generator
-    ./mvnw -Dmaven.test.skip=true clean package
-
-Then instead of using ``openapi-generator`` as above, do this instead::
-
-    java -jar /tmp/openapi-generator/modules/openapi-generator-cli/target/openapi-generator-cli.jar generate -g python-legacy -i swagger.json --package-name pds.api_client --additional-properties=packageVersion=X.Y.Z
-
-again, replacing ``X.Y.Z``. Note that Thomas has reported_ this issue and made
-a `pull request`_, but they remain open as of this writing (2021-09-22).
 
 
 Installation
@@ -82,12 +72,17 @@ To test it, try the virtual environment's Python::
 
     python client-demo.py
 
+    python setup.py test
+
+
+Note that you need an API server to test on.
 
 PyPI Publication
 ~~~~~~~~~~~~~~~~
 
 Try::
 
+    pip install wheel
     python setup.py sdist bdist_wheel
     twine upload --repository testpypi dist/*
 
