@@ -39,13 +39,13 @@ Generate the Library
 First make sure the swagger.json file is up to date. It contains the OpenAPI specification of the API for which we want to generate the client code.
 The reference OpenAPI specifications for PDS can be found on `specifications <https://nasa-pds.github.io/pds-api/specifications.html>`_
 
-You need to preprocess this specification to remove directives which break th code generation. Run from the base directory:
+You then need to preprocess this specification to remove directives which break the code generation. Run from the base directory::
 
     % python src/pds/api_client/preprocess_openapi.py
 
 Then, install OpenAPI Generator (e.g. on macos with brew), and run::
 
-    openapi-generator generate -g python -i swagger.json --package-name pds.api_client --additional-properties=packageVersion=X.Y.Z.
+    openapi-generator generate -g python -i preprocessed-swagger.json --package-name pds.api_client --additional-properties=packageVersion=X.Y.Z.
     cp .gitignore-orig .gitignore
 
 Replace ``X.Y.Z`` with the version of the package you're creating. The second

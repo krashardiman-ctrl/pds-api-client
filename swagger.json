@@ -947,6 +947,11 @@
       "Plural" : {
         "description" : "Successful request",
         "content" : {
+          "*" : {
+            "schema" : {
+              "type" : "object"
+            }
+          },
           "*/*" : {
             "schema" : {
               "$ref" : "#/components/schemas/pdsProducts"
@@ -1129,6 +1134,7 @@
       },
       "pdsProduct" : {
         "type" : "object",
+        "description" : "default PDS product description format for the API.",
         "required" : [ "id", "metadata" ],
         "properties" : {
           "id" : {
@@ -1245,6 +1251,7 @@
       },
       "wyriwygProduct" : {
         "type" : "object",
+        "description" : "minimalistic description of a pds product with only the key value pairs requested by the user (what you request is what you get)",
         "required" : [ "key_value_pairs" ],
         "properties" : {
           "key_value_pairs" : {
@@ -1413,6 +1420,7 @@
       },
       "pds4Product" : {
         "type" : "object",
+        "description" : "PDS4 Label",
         "required" : [ "id" ],
         "properties" : {
           "id" : {
@@ -1426,8 +1434,7 @@
             "type" : "object",
             "description" : "PDS4 JSON"
           }
-        },
-        "description" : "PDS4 Label"
+        }
       },
       "pds4Products" : {
         "type" : "object",
