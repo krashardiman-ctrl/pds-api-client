@@ -14,7 +14,7 @@ class CollectionsApiTestCase(unittest.TestCase):
     def setUp(self):
         # create an instance of the API class
         configuration = Configuration()
-        configuration.host = 'http://localhost:8081'
+        configuration.host = 'http://localhost:8080'
         api_client = ApiClient(configuration)
         self.collections = CollectionsApi(api_client)
 
@@ -50,7 +50,6 @@ class CollectionsApiTestCase(unittest.TestCase):
             urls = collection['properties']['ops:Label_File_Info.ops:file_ref']
             assert next(collections_expected_labels) in urls.value[0]
 
-
     def test_collection_by_lidvid_all(self):
         collections = self.collections.collections_by_lidvid_all('urn:nasa:pds:insight_rad:data_derived::7.0')
         assert 'data' in collections
@@ -58,7 +57,6 @@ class CollectionsApiTestCase(unittest.TestCase):
         assert 'id' in collections.data[0]
         assert collections.data[0]['id'] == 'urn:nasa:pds:insight_rad:data_derived::7.0'
 
-    #@unittest.skip('does not work')
     def test_collection_by_lidvid_all_content_type(self):
         collections: Pds4Products = self.collections.collections_by_lidvid_all(
             'urn:nasa:pds:insight_rad:data_derived::7.0',

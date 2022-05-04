@@ -4,7 +4,7 @@ Developer Notes
 If you're a developer or maintainer of this package, this document's for you.
 This tells you how to generate and maintain the PDS API client.
 
-Automatically generates a python client library from OpenApi specification of the `PDS federated API`_.
+Automatically generates a python client library from OpenApi specification of the `PDS API`_.
 
 .. warning:: The link to the PDS federated API may be offline and/or not found.
 
@@ -37,7 +37,7 @@ Then::
 Generate the Library
 ~~~~~~~~~~~~~~~~~~~~
 First make sure the swagger.json file is up to date. It contains the OpenAPI specification of the API for which we want to generate the client code.
-The reference OpenAPI specifications for PDS can be found on `specifications <https://nasa-pds.github.io/pds-api/specifications.html>`_
+The reference OpenAPI specifications for PDS can be found on `PDS API`_.
 
 You then need to preprocess this specification to remove directives which break the code generation. Run from the base directory::
 
@@ -67,6 +67,11 @@ Do the following commands in a Python virtual environment::
 
 Testing
 ~~~~~~~
+
+For testing you need an Registry API local server deployed on http://localhost:8080
+
+Use the docker compose deployment, see https://nasa-pds.github.io/registry/install/docker-compose.html
+
 
 To test it, try the virtual environment's Python::
 
@@ -107,7 +112,4 @@ and don't forget to commit and push.
 
 
 .. References:
-.. _`PDS federated API`: https://app.swaggerhub.com/apis/PDS_APIs/pds_federated_api/0.0#/info
-.. _`Thomas Loubrieu`: https://github.com/tloubrieu-jpl
-.. _reported: https://github.com/OpenAPITools/openapi-generator/issues/10005
-.. _`pull request`: https://github.com/OpenAPITools/openapi-generator/pull/10004
+.. _`PDS API`: https://nasa-pds.github.io/pds-api/specifications.html
