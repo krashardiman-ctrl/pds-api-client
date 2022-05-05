@@ -53,7 +53,7 @@ your ``install_requires``.
    ``pds2`` or anything else. This is a `documented bug`_.
 
 
-Create an api connection
+Create an API Connection
 ------------------------
 
 .. code-block:: python
@@ -68,7 +68,7 @@ Create an api connection
    api_client = ApiClient(configuration)
 
 
-Request one end point
+Request One End Point
 ---------------------
 
 There are different API end points:
