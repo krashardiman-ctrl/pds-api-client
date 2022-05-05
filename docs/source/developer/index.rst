@@ -37,7 +37,7 @@ Then::
 Generate the Library
 ~~~~~~~~~~~~~~~~~~~~
 First make sure the swagger.json file is up to date. It contains the OpenAPI specification of the API for which we want to generate the client code.
-The reference OpenAPI specifications for PDS can be found on `PDS API`_.
+The reference OpenAPI specifications for PDS can be found on `PDS API`_. Use a swagger tool (e.g. https://app.swaggerhub.com/) to convert the yaml into an unresolved JSON.
 
 You then need to preprocess this specification to remove directives which break the code generation. Run from the base directory::
 
