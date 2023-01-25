@@ -7,9 +7,9 @@ from pprint import pprint
 
 # create an instance of the API class
 configuration = Configuration()
-#configuration.host = 'https://pds.nasa.gov/api/search/1.1'
+configuration.host = 'https://pds.nasa.gov/api/search/1'
 #configuration.host = 'https://pds.nasa.gov/api/search-en-gamma/1.1'
-configuration.host = 'http://localhost:8080'
+#configuration.host = 'http://localhost:8080'
 api_client = ApiClient(configuration)
 
 
