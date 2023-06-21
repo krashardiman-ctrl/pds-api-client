@@ -2,7 +2,7 @@ import unittest
 from pds.api_client import Configuration
 from pds.api_client import ApiClient
 
-from pds.api_client.apis.paths.products import Products
+from pds.api_client.api.all_products_api import AllProductsApi
 
 
 class ProductsCase(unittest.TestCase):
@@ -12,15 +12,14 @@ class ProductsCase(unittest.TestCase):
         configuration = Configuration()
         configuration.host = 'http://localhost:8080'
         api_client = ApiClient(configuration)
-        self.products = Products(api_client)
+        self.products = AllProductsApi(api_client)
 
     def test_products_by_keywords(self):
-        results = self.products.get(
-            query_params={'keywords': ['insight']},
-            accept_content_types=('application/json',)
-        ).body
+        results = self.products.product_list(
+            keywords=['kernel']
+        )
 
-        self.assertEqual(len(results.data), 17)  # add assertion here
+        self.assertEqual(len(results.data), 3)  # add assertion here
 
 
 if __name__ == '__main__':

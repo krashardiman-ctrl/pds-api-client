@@ -41,13 +41,8 @@ The reference OpenAPI specifications for PDS can be found on `PDS API`_.
 
 Then, install OpenAPI Generator 6.5.0 (e.g. on macos with brew, see https://github.com/OpenAPITools/openapi-generator#1---installation), and run::
 
-    rm -fr pds test
-    openapi-generator generate -g python-nextgen -i ~/PycharmProjects/pds-api/specs/PDS_APIs-search-1.1.1-swagger.yaml  --package-name pds.api_client --additional-properties=packageVersion=2.0.0
-    cp .gitignore-orig .gitignore
+    python src/pds/api_client/preprocess_openapi.py /Users/loubrieu/PycharmProjects/pds-api/specs/PDS_APIs-search-1.1.1-swagger.yaml --version 1.3.0
 
-Replace ``X.Y.Z`` with the version of the package you're creating. The second
-step is necessary because the OpenAPI generator blithely clobbers our
-precious ``.gitignore`` file.
 
 Installation
 ~~~~~~~~~~~~
@@ -68,7 +63,6 @@ Use the docker compose deployment, see https://nasa-pds.github.io/registry/insta
 To test it, try the virtual environment's Python::
 
     python client-demo.py
-
     python setup.py test
 
 
