@@ -24,8 +24,8 @@ class CollectionsApiTestCase(unittest.TestCase):
             limit=10
         )
 
-        assert len(api_response.data) == 1
-        assert api_response.summary.hits == 1
+        assert len(api_response.data) == 4
+        assert api_response.summary.hits == 4
 
         assert all([hasattr(c, 'id') for c in api_response.data])
 
@@ -48,7 +48,10 @@ class CollectionsApiTestCase(unittest.TestCase):
         assert hasattr(api_response, "data")
 
         collections_expected_labels = iter([
-            "http://localhost:81/archive//custom-datasets/naif3/spice_kernels/collection_spice_kernels_v003.xml"
+            "http://localhost:81/archive/custom-datasets/naif3/spice_kernels/collection_spice_kernels_v003.xml",
+            "http://localhost:81/archive/custom-datasets/urn-nasa-pds-insight_rad/data_calibrated/collection_data_rad_calibrated.xml",
+            "http://localhost:81/archive/custom-datasets/urn-nasa-pds-insight_rad/data_derived/collection_data_rad_derived.xml",
+            "http://localhost:81/archive/custom-datasets/urn-nasa-pds-insight_rad/data_raw/collection_data_rad_raw.xml"
         ])
 
         for collection in api_response.data:
@@ -59,8 +62,8 @@ class CollectionsApiTestCase(unittest.TestCase):
         collections = self.all_products.select_by_lidvid_all('urn:nasa:pds:mars2020.spice:spice_kernels')
         assert hasattr(collections, 'data')
         assert len(collections.data) > 0
-        assert hasattr(collections.data[0], 'id')
-        assert collections.data[0].id == 'urn:nasa:pds:mars2020.spice:spice_kernels::3.0'
+        assert hasattr(collections.data[-1], 'id')
+        assert collections.data[-1].id == 'urn:nasa:pds:mars2020.spice:spice_kernels::3.0'
 
     @unittest.skip("Does not work with the latest version of the openapi generator")
     def test_collection_by_lidvid_all_content_type(self):

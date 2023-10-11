@@ -1,7 +1,9 @@
 import yaml
 import argparse
 import tempfile
+import shutil
 import subprocess
+
 
 def preprocess(input: dict):
 
@@ -16,6 +18,34 @@ def preprocess(input: dict):
         del r['content']['*']
 
     return input
+
+
+def run_openapi_gen(input, version):
+    with tempfile.NamedTemporaryFile(mode='w', delete=True) as file:
+        yaml.dump(input, file)
+        shutil.rmtree('pds', ignore_errors=True)
+        shutil.rmtree('test', ignore_errors=True)
+
+        # to test with the latest version of the openapi-generator
+        # openapi_generator_cmd = [
+        #    'java',
+        #    '-jar',
+        #    '.../openapi-generator/modules/openapi-generator-cli/target/openapi-generator-cli.jar'
+        #    ]
+
+        openapi_generator_cmd = ['openapi-generator']
+        openapi_generator_cmd.extend([
+            'generate',
+            '--skip-validate-spec',
+            '-g',
+            'python-nextgen',
+            '-i',
+            file.name,
+            '--package-name',
+            'pds.api_client',
+            f'--additional-properties=packageVersion={version}'
+        ])
+        subprocess.run(openapi_generator_cmd)
 
 
 def main():
@@ -33,37 +63,10 @@ def main():
         try:
             input = yaml.safe_load(stream)
             preprocess(input)
-
+            run_openapi_gen(input, args.version)
+            shutil.copy('.gitignore-orig', '.gitignore')
         except yaml.YAMLError as exc:
             print(exc)
-
-    with tempfile.NamedTemporaryFile(mode='w', delete=True) as file:
-        yaml.dump(input, file)
-        clean_cmd = ['rm', '-fr', 'pds', 'test']
-        subprocess.run(clean_cmd)
-
-        # to test with the latest version of the openapi-generator
-        #openapi_generator_cmd = [
-        #    'java',
-        #    '-jar',
-        #    '.../openapi-generator/modules/openapi-generator-cli/target/openapi-generator-cli.jar'
-        #    ]
-
-        openapi_generator_cmd = ['openapi-generator']
-        openapi_generator_cmd.extend([
-            'generate',
-            '-g',
-            'python-nextgen',
-            '-i',
-            file.name,
-            '--package-name',
-            'pds.api_client',
-            f'--additional-properties=packageVersion={args.version}'
-        ])
-        subprocess.run(openapi_generator_cmd)
-
-        replace_gitignore_cmd = ['cp', '.gitignore-orig',  '.gitignore']
-        subprocess.run(replace_gitignore_cmd)
 
 
 if __name__ == '__main__':
