@@ -14,6 +14,11 @@ class ProductsCase(unittest.TestCase):
         api_client = ApiClient(configuration)
         self.products = AllProductsApi(api_client)
 
+    def test_get_properties(self):
+
+        properties = self.products.product_properties_list()
+
+
     def test_products_by_keywords(self):
         results = self.products.product_list(
             keywords=['kernel']
