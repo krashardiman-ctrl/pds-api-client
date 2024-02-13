@@ -20,7 +20,6 @@ class CollectionsApiTestCase(unittest.TestCase):
 
         api_response = self.product_by_class.class_list(
             'collections',
-            start=0,
             limit=10
         )
 
@@ -40,14 +39,13 @@ class CollectionsApiTestCase(unittest.TestCase):
     def test_all_collections_one_property(self):
         api_response = self.product_by_class.class_list(
             'collections',
-            start=0,
             limit=20,
             fields=['ops:Label_File_Info.ops:file_ref']
         )
 
         assert hasattr(api_response, "data")
 
-        collections_expected_labels = iter([
+        collections_expected_labels = set([
             "http://localhost:81/archive/custom-datasets/naif3/spice_kernels/collection_spice_kernels_v003.xml",
             "http://localhost:81/archive/custom-datasets/urn-nasa-pds-insight_rad/data_calibrated/collection_data_rad_calibrated.xml",
             "http://localhost:81/archive/custom-datasets/urn-nasa-pds-insight_rad/data_derived/collection_data_rad_derived.xml",
@@ -56,7 +54,9 @@ class CollectionsApiTestCase(unittest.TestCase):
 
         for collection in api_response.data:
             urls = collection.properties['ops:Label_File_Info.ops:file_ref']
-            assert next(collections_expected_labels) in urls[0]
+            assert urls[0] in collections_expected_labels
+            collections_expected_labels.discard(urls[0])
+
 
     def test_collection_by_lidvid_all(self):
         collections = self.all_products.select_by_lidvid_all('urn:nasa:pds:mars2020.spice:spice_kernels')

@@ -45,32 +45,27 @@ Then, install OpenAPI Generator 6.5.0 (e.g. on macos with brew, see https://gith
 
 Manual step, add lines in the setup.py file:
 
+    from setuptools import find_namespace_packages
     packages=find_namespace_packages(where='src/', exclude=["test", "tests"]),
     package_dir={"": "src"},
 
-Installation
-~~~~~~~~~~~~
 
-Do the following commands in a Python virtual environment::
-
-    pip install --requirement requirements.txt
-    python setup.py install
-
-
-Testing
-~~~~~~~
-
-For testing you need an Registry API local server deployed on http://localhost:8080
+Installation & Testing
+~~~~~~~~~~~~~~~~~~~~~~~
+For integration testing you need an Registry API local server deployed on http://localhost:8080
 
 Use the docker compose deployment, see https://nasa-pds.github.io/registry/install/docker-compose.html
 
-To test it, try the virtual environment's Python::
+Do the following commands in a Python virtual environment::
+
+    tox
+
+
+Run demo
+~~~~~~~~~
 
     python src/pds/api_client/demo/client-demo.py
-    python setup.py test
 
-
-Note that you need an API server to test on.
 
 PyPI Publication
 ~~~~~~~~~~~~~~~~
@@ -79,6 +74,7 @@ Try::
 
     pip install wheel
     python setup.py sdist bdist_wheel
+    pip install twine
     twine upload --repository testpypi dist/*
 
 

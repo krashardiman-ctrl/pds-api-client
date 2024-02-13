@@ -33,6 +33,8 @@ The package releases match with the `Search API specification <https://nasa-pds.
 
    * - pds.api-client
      - pds search api specification
+   * - 1.5.X
+     - 1.4
    * - 1.4.X
      - 1.3
    * - 1.3.X
@@ -46,7 +48,7 @@ The package releases match with the `Search API specification <https://nasa-pds.
 
 To install a specific version of this package, run, for example::
 
-    pip install pds.api-client==1.3.0
+    pip install pds.api-client==1.4.0
 
 
 You can also include it as a dependency in another package, for example, in

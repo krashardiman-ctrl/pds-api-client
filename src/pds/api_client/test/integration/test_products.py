@@ -18,7 +18,6 @@ class ProductsCase(unittest.TestCase):
 
         properties = self.products.product_properties_list()
 
-
     def test_products_by_keywords(self):
         results = self.products.product_list(
             keywords=['kernel']
