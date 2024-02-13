@@ -8,8 +8,6 @@ Prerequisites
 -------------
 
 Python 3 (tested with 3.9).
-<<<<<<< HEAD
-=======
 
 Issues with SSL certificate verification seen with python 3.9.
 
@@ -18,9 +16,6 @@ If it occurs to you, try:
     pip install --upgrade certifi
 
 However, we have not been able to solve that with conda python 3.9.
-
->>>>>>> 94a82f3 (wip: add test on properties, add new version compliance line)
-
 
 
 Installation

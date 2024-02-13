@@ -43,6 +43,10 @@ Then, install OpenAPI Generator 6.5.0 (e.g. on macos with brew, see https://gith
 
     python src/pds/api_client/preprocess_openapi.py /Users/loubrieu/PycharmProjects/pds-api/specs/PDS_APIs-search-1.1.1-swagger.yaml --version 1.3.0
 
+Manual step, add lines in the setup.py file:
+
+    packages=find_namespace_packages(where='src/', exclude=["test", "tests"]),
+    package_dir={"": "src"},
 
 Installation
 ~~~~~~~~~~~~
@@ -62,7 +66,7 @@ Use the docker compose deployment, see https://nasa-pds.github.io/registry/insta
 
 To test it, try the virtual environment's Python::
 
-    python client-demo.py
+    python src/pds/api_client/demo/client-demo.py
     python setup.py test
 
 
