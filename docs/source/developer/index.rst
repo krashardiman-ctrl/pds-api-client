@@ -41,11 +41,13 @@ The reference OpenAPI specifications for PDS can be found on `PDS API`_.
 
 Then, install OpenAPI Generator 6.5.0 (e.g. on macos with brew, see https://github.com/OpenAPITools/openapi-generator#1---installation), and run::
 
+    pip install pyyaml
     python src/pds/api_client/preprocess_openapi.py /Users/loubrieu/PycharmProjects/pds-api/specs/PDS_APIs-search-1.1.1-swagger.yaml --version 1.3.0
 
 Manual step, add lines in the setup.py file:
 
     from setuptools import find_namespace_packages
+
     packages=find_namespace_packages(where='src/', exclude=["test", "tests"]),
     package_dir={"": "src"},
 
