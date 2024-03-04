@@ -38,7 +38,7 @@ def run_openapi_gen(input, version):
             'generate',
             '--skip-validate-spec',
             '-g',
-            'python-nextgen',
+            'python',
             '-i',
             file.name,
             '--package-name',
@@ -46,6 +46,8 @@ def run_openapi_gen(input, version):
             f'--additional-properties=packageVersion={version}'
         ])
         subprocess.run(openapi_generator_cmd)
+        # move the generated classes with the static code
+        shutil.copytree('./pds/api_client', './src/pds/api_client', dirs_exist_ok=True)
 
 
 def main():

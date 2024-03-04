@@ -8,8 +8,6 @@ Prerequisites
 -------------
 
 Python 3 (tested with 3.9).
-<<<<<<< HEAD
-=======
 
 Issues with SSL certificate verification seen with python 3.9.
 
@@ -18,9 +16,6 @@ If it occurs to you, try:
     pip install --upgrade certifi
 
 However, we have not been able to solve that with conda python 3.9.
-
->>>>>>> 94a82f3 (wip: add test on properties, add new version compliance line)
-
 
 
 Installation
@@ -38,6 +33,8 @@ The package releases match with the `Search API specification <https://nasa-pds.
 
    * - pds.api-client
      - pds search api specification
+   * - 1.5.X
+     - 1.4
    * - 1.4.X
      - 1.3
    * - 1.3.X
@@ -51,7 +48,7 @@ The package releases match with the `Search API specification <https://nasa-pds.
 
 To install a specific version of this package, run, for example::
 
-    pip install pds.api-client==1.3.0
+    pip install pds.api-client==1.4.0
 
 
 You can also include it as a dependency in another package, for example, in

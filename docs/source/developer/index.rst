@@ -41,32 +41,33 @@ The reference OpenAPI specifications for PDS can be found on `PDS API`_.
 
 Then, install OpenAPI Generator 6.5.0 (e.g. on macos with brew, see https://github.com/OpenAPITools/openapi-generator#1---installation), and run::
 
+    pip install pyyaml
     python src/pds/api_client/preprocess_openapi.py /Users/loubrieu/PycharmProjects/pds-api/specs/PDS_APIs-search-1.1.1-swagger.yaml --version 1.3.0
 
+Manual step, add lines in the setup.py file:
 
-Installation
-~~~~~~~~~~~~
+    from setuptools import find_namespace_packages
 
-Do the following commands in a Python virtual environment::
-
-    pip install --requirement requirements.txt
-    python setup.py install
+    packages=find_namespace_packages(where='src/', exclude=["test", "tests"]),
+    package_dir={"": "src"},
 
 
-Testing
-~~~~~~~
-
-For testing you need an Registry API local server deployed on http://localhost:8080
+Installation & Testing
+~~~~~~~~~~~~~~~~~~~~~~~
+For integration testing you need an Registry API local server deployed on http://localhost:8080
 
 Use the docker compose deployment, see https://nasa-pds.github.io/registry/install/docker-compose.html
 
-To test it, try the virtual environment's Python::
+Do the following commands in a Python virtual environment::
 
-    python client-demo.py
-    python setup.py test
+    tox
 
 
-Note that you need an API server to test on.
+Run demo
+~~~~~~~~~
+
+    python src/pds/api_client/demo/client-demo.py
+
 
 PyPI Publication
 ~~~~~~~~~~~~~~~~
@@ -75,6 +76,7 @@ Try::
 
     pip install wheel
     python setup.py sdist bdist_wheel
+    pip install twine
     twine upload --repository testpypi dist/*
 
 
