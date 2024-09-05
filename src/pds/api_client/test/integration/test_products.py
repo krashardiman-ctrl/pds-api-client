@@ -20,12 +20,12 @@ class ProductsCase(unittest.TestCase):
         properties_dict = {p.var_property:{"type": p.type} for p in properties}
         assert '_package_id' in properties_dict.keys()
         assert 'alternate_ids' in properties_dict.keys()
-        assert 'insight:Observation_Information/insight:software_version_id' in properties_dict.keys()
+        assert 'insight:Observation_Information.insight:software_version_id' in properties_dict.keys()
         assert properties_dict['_package_id']['type'] == 'string'
         assert properties_dict['alternate_ids']['type'] == 'string'
-        assert properties_dict['insight:Observation_Information/insight:software_version_id']['type'] == 'string'
+        assert properties_dict['insight:Observation_Information.insight:software_version_id']['type'] == 'string'
 
-
+    @unittest.skip("keyword is temporarily not implemented in version 1.5.0 of the API")
     def test_products_by_keywords(self):
         results = self.products.product_list(
             keywords=['kernel']

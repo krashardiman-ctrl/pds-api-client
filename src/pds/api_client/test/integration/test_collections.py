@@ -19,7 +19,7 @@ class CollectionsApiTestCase(unittest.TestCase):
     def test_all_collections(self):
 
         api_response = self.product_by_class.class_list(
-            'collections',
+            'collection',
             limit=10
         )
 
@@ -38,7 +38,7 @@ class CollectionsApiTestCase(unittest.TestCase):
 
     def test_all_collections_one_property(self):
         api_response = self.product_by_class.class_list(
-            'collections',
+            'collection',
             limit=20,
             fields=['ops:Label_File_Info.ops:file_ref']
         )

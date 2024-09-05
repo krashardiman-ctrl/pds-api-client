@@ -15,23 +15,23 @@ class PaginationTestCase(unittest.TestCase):
 
     def test_pages(self):
         results_1 = self.products.product_list(
-            keywords=['kernel'],
+            q='ref_lid_instrument eq "urn:nasa:pds:context:instrument:radiometer.insight"',
             sort=['ops:Harvest_Info.ops:harvest_date_time'],
-            limit=2
+            limit=3
         )
 
-        self.assertEqual(len(results_1.data), 2)  # add assertion here
+        self.assertEqual(len(results_1.data), 3)  # add assertion here
 
         latest_harvest_date_time = results_1.data[-1].properties['ops:Harvest_Info.ops:harvest_date_time'][0]
 
         results_2 = self.products.product_list(
-            keywords=['kernel'],
+            q='ref_lid_instrument eq "urn:nasa:pds:context:instrument:radiometer.insight"',
             sort=['ops:Harvest_Info.ops:harvest_date_time'],
             search_after=[latest_harvest_date_time],
-            limit=2
+            limit=3
         )
 
-        self.assertEqual(len(results_2.data), 1)
+        self.assertEqual(len(results_2.data), 3)
 
 
 if __name__ == '__main__':
