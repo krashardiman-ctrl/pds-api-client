@@ -9,9 +9,11 @@ def preprocess(input: dict):
 
     new_tags_dict = {t['name']: t['name'][3:] for t in input['tags']}
     for path in input['paths'].keys():
-        tags = input['paths'][path]['get']['tags']
-        new_tags = [new_tags_dict.get(tag, tag) for tag in tags]
-        input['paths'][path]['get']['tags'] = new_tags
+        for method in ['get', 'post']:
+            if method in input['paths'][path]:
+                tags = input['paths'][path][method]['tags']
+                new_tags = [new_tags_dict.get(tag, tag) for tag in tags]
+                input['paths'][path][method]['tags'] = new_tags
 
     # remove the * object which is confusing for the api generator
     for k, r in input['components']['responses'].items():
