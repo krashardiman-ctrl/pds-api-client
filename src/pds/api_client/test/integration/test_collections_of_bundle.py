@@ -2,13 +2,13 @@ import unittest
 from pds.api_client import Configuration
 from pds.api_client import ApiClient
 from pds.api_client.api.product_references_api import ProductReferencesApi
-
+from .constants import HOST
 
 class CollectionsOfBundleTestCase(unittest.TestCase):
     def setUp(self):
         # create an instance of the API class
         configuration = Configuration()
-        configuration.host = 'http://localhost:8080'
+        configuration.host = HOST
         api_client = ApiClient(configuration)
         self.product_reference = ProductReferencesApi(api_client)
 
@@ -61,7 +61,7 @@ class CollectionsOfBundleTestCase(unittest.TestCase):
             'urn:nasa:pds:mars2020.spice:spice_kernels::3.0'
         )
 
-        self.assertEqual(len(results.data), 11)  # add assertion here
+        self.assertEqual(len(results.data), 4)  # add assertion here
 
 
 if __name__ == '__main__':

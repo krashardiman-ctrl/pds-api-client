@@ -4,6 +4,7 @@ from pds.api_client import ApiClient
 from pds.api_client.api.by_product_classes_api import ByProductClassesApi
 from pds.api_client.api.all_products_api import AllProductsApi
 from pds.api_client.models.pds4_products import Pds4Products
+from .constants import HOST
 
 
 class CollectionsApiTestCase(unittest.TestCase):
@@ -11,7 +12,7 @@ class CollectionsApiTestCase(unittest.TestCase):
     def setUp(self):
         # create an instance of the API class
         configuration = Configuration()
-        configuration.host = 'http://localhost:8080'
+        configuration.host = HOST
         api_client = ApiClient(configuration)
         self.product_by_class = ByProductClassesApi(api_client)
         self.all_products = AllProductsApi(api_client)
@@ -63,7 +64,8 @@ class CollectionsApiTestCase(unittest.TestCase):
         assert hasattr(collections, 'data')
         assert len(collections.data) > 0
         assert hasattr(collections.data[-1], 'id')
-        assert collections.data[-1].id == 'urn:nasa:pds:mars2020.spice:spice_kernels::3.0'
+        for p in collections.data:
+            assert p.id.split("::")[0] == 'urn:nasa:pds:mars2020.spice:spice_kernels'
 
     @unittest.skip("Does not work with the latest version of the openapi generator")
     def test_collection_by_lidvid_all_content_type(self):

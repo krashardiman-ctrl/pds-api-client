@@ -4,12 +4,13 @@ from pds.api_client import ApiClient
 
 from pds.api_client.api.all_products_api import AllProductsApi
 
+from .constants import HOST
 
 class PaginationTestCase(unittest.TestCase):
     def setUp(self):
         # create an instance of the API class
         configuration = Configuration()
-        configuration.host = 'http://localhost:8080'
+        configuration.host = HOST
         api_client = ApiClient(configuration)
         self.products = AllProductsApi(api_client)
 
