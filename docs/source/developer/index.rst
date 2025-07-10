@@ -13,7 +13,7 @@ Requisites
 ----------
 
 • code generator https://github.com/OpenAPITools/openapi-generator
-• python 3.9
+• tested with python 3.13
   
 
 Procedure
